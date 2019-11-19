@@ -205,8 +205,8 @@ class Asteroid(Entity):
 
 def main():
     """ runs our application """
-   
-    
+
+
 
     # setup pygame
     pygame.init()
@@ -215,12 +215,12 @@ def main():
     pygame.display.set_caption("Asteroids 0.2")
 
     # store our game state
-    
+
     player = Player((400, 300))
-    
-    
+
+
     world = World((800, 600), player)
-    
+
     world.pew = pygame.mixer.Sound('assets/pew.wav')
 
     # use the clock to throttle the fps to something reasonable
@@ -232,15 +232,15 @@ def main():
     objects = 0
     while running:
         delay +=1
-        
+
         events = pygame.event.get()
         if (delay >= 50 and len(world.sprites)<29):
             delay = 0
             asteroid = Asteroid((random.randint(0,800), random.randint(0,600)))
             world.sprites.add(asteroid)
             objects += 1
-          
-        
+
+
         # handle our events
         for event in events:
             if event.type == QUIT:
