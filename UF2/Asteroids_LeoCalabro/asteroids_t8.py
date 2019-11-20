@@ -202,11 +202,8 @@ class Asteroid(Entity):
             print("mata")
 
 
-
 def main():
     """ runs our application """
-
-
 
     # setup pygame
     pygame.init()
@@ -217,7 +214,6 @@ def main():
     # store our game state
 
     player = Player((400, 300))
-
 
     world = World((800, 600), player)
 
@@ -231,15 +227,15 @@ def main():
     delay = 0
     objects = 0
     while running:
-        delay +=1
+        delay += 1
 
         events = pygame.event.get()
-        if (delay >= 50 and len(world.sprites)<29):
+        if (delay >= 50 and len(world.sprites) < 29):
             delay = 0
-            asteroid = Asteroid((random.randint(0,800), random.randint(0,600)))
+            asteroid = Asteroid(
+                (random.randint(0, 800), random.randint(0, 600)))
             world.sprites.add(asteroid)
             objects += 1
-
 
         # handle our events
         for event in events:
@@ -249,7 +245,10 @@ def main():
 
             world.handle_event(event)
 
-        
+        world.update()
+        world.render()
+        pygame.display.flip()
+        clock.tick(40)
 
 
 if __name__ == "__main__":
